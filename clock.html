@@ -4,29 +4,45 @@
 		<title>clock</title>   
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
 		<script>
-			$(function(){
+			$(function() {
+				set_hours();
+				set_mins();
+				set_sec();
+
 				setInterval( function() {
-					var hours = new Date().getHours();
-					var mins = new Date().getMinutes();
-					var hourDegree = hours * 30 + (mins / 2);
-					var hourRotate = "rotate(" + hourDegree + "deg)";
-					$("#js-hour").css({"transform" : hourRotate});  
+					set_hours();
 				}, 1000 );
 			
 				setInterval( function() {
-					var mins = new Date().getMinutes();
-					var minDegree = mins * 6;
-					var minRotate = "rotate(" + minDegree + "deg)";
-					$("#js-min").css({"transform" : minRotate});
+					set_mins();
 				}, 1000 );
 			
 				setInterval( function() {
-					var seconds = new Date().getSeconds();
-					var secondDegree = seconds * 6;
-					var secondRotate = "rotate(" + secondDegree + "deg)";
-					$("#js-sec").css({"transform" : secondRotate});
-					}, 1000 );
-				});
+					set_sec();
+				}, 1000 );
+			});
+				
+			function set_hours() {
+				var hours = new Date().getHours();
+				var mins = new Date().getMinutes();
+				var hourDegree = hours * 30 + (mins / 2);
+				var hourRotate = "rotate(" + hourDegree + "deg)";
+				$("#js-hour").css({"transform" : hourRotate});  
+			}
+			
+			function set_mins() {
+				var mins = new Date().getMinutes();
+				var minDegree = mins * 6;
+				var minRotate = "rotate(" + minDegree + "deg)";
+				$("#js-min").css({"transform" : minRotate});				
+			}
+			
+			function set_sec() {
+				var seconds = new Date().getSeconds();
+				var secondDegree = seconds * 6;
+				var secondRotate = "rotate(" + secondDegree + "deg)";
+				$("#js-sec").css({"transform" : secondRotate});
+			}
 		</script>
 		<style>
 			* {
