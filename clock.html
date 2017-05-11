@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>clock</title>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+    <script>
+    $(function(){
+      setInterval( function() {
+        var hours = new Date().getHours();
+        var mins = new Date().getMinutes();
+        var hourDegree = hours * 30 + (mins / 2);
+        var hourRotate = "rotate(" + hourDegree + "deg)";
+      	$("#js-hour").css({"transform" : hourRotate});  
+      }, 1000 );
+
+      setInterval( function() {
+        var mins = new Date().getMinutes();
+        var minDegree = mins * 6;
+        var minRotate = "rotate(" + minDegree + "deg)";
+        $("#js-min").css({"transform" : minRotate});
+      }, 1000 );
+
+      setInterval( function() {
+        var seconds = new Date().getSeconds();
+        var secondDegree = seconds * 6;
+        var secondRotate = "rotate(" + secondDegree + "deg)";
+        $("#js-sec").css({"transform" : secondRotate});
+      }, 1000 );
+    });
+
+    </script>
+
+    <style>
+      * {
+      	margin: 0;
+      	padding: 0;
+      }
+
+      .clock {
+      	background: url(images/clock.png);
+      	position: relative;
+      	margin: 20px auto 0 auto;
+      	list-style: none;
+      	width: 600px;
+      	height: 600px;
+      }
+
+      .hour {
+      	background: url(images/hourhand.png);
+      	z-index: 1;
+      }
+         
+      .min {
+      	background: url(images/minhand.png);
+      	z-index: 2;
+      }
+
+      .sec {
+      	background: url(images/sechand.png);
+      	z-index: 3;
+    	}
+              
+      .hour, .min, .sec {
+      	width: 30px;
+      	height: 600px;
+      	position: absolute;
+      	top: 0px;
+      	left: 285px;
+      }
+         	
+      p {
+      	text-align: center; 
+      	padding: 10px 0 0 0;
+      }
+    </style>
+	</head>
+	<body>
+		<ul class="clock">	
+		  <li class="hour" id="js-hour"></li>		
+			<li class="min" id="js-min"></li>
+		  <li class="sec" id="js-sec"></li>
+		</ul>
+	</body>
+</html>
